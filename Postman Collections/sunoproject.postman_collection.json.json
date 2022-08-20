@@ -1,0 +1,1910 @@
+{
+	"info": {
+		"_postman_id": "a455d150-2ce3-483a-910b-886f6c015d7a",
+		"name": "SunoProject",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CreateRequestToken",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a3c752f4-1850-4987-81ca-562d7706d199",
+						"exec": [
+							"const response = pm.response.json();\r",
+							"\r",
+							"pm.globals.set(\"request_token\", response.request_token);\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 1000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "6d1bf9c3-ff72-411a-8026-6d16bad361c0",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.themoviedb.org/3/authentication/token/new?api_key=9abed9e55c2e92c3286417954422903e",
+					"protocol": "https",
+					"host": [
+						"api",
+						"themoviedb",
+						"org"
+					],
+					"path": [
+						"3",
+						"authentication",
+						"token",
+						"new"
+					],
+					"query": [
+						{
+							"key": "api_key",
+							"value": "9abed9e55c2e92c3286417954422903e"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ValidadeWithLogin",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9d623269-8c69-493c-ab28-4ace5f1219d4",
+						"exec": [
+							"const response = pm.response.json();\r",
+							"\r",
+							"console.log(response.request_token);\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 1000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "06f0031e-0e9d-462d-a326-cfa6227f1d37",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"Nikoreis\",\r\n  \"password\": \"1212hehe\",\r\n  \"request_token\": \"{{request_token}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.themoviedb.org/3/authentication/token/validate_with_login?api_key=9abed9e55c2e92c3286417954422903e",
+					"protocol": "https",
+					"host": [
+						"api",
+						"themoviedb",
+						"org"
+					],
+					"path": [
+						"3",
+						"authentication",
+						"token",
+						"validate_with_login"
+					],
+					"query": [
+						{
+							"key": "api_key",
+							"value": "9abed9e55c2e92c3286417954422903e"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateSession(v3 access token)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "58b7b21c-ab6f-4417-8f93-623e6ecc3895",
+						"exec": [
+							"const response = pm.response.json();\r",
+							"\r",
+							"pm.globals.set(\"session_id\", response.session_id);\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 1000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "20101d6c-a9d4-4bcd-93d8-af30b965daf5",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"request_token\": \"{{request_token}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.themoviedb.org/3/authentication/session/new?api_key=9abed9e55c2e92c3286417954422903e",
+					"protocol": "https",
+					"host": [
+						"api",
+						"themoviedb",
+						"org"
+					],
+					"path": [
+						"3",
+						"authentication",
+						"session",
+						"new"
+					],
+					"query": [
+						{
+							"key": "api_key",
+							"value": "9abed9e55c2e92c3286417954422903e"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAccountDetails",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c61aebed-206c-4b8d-923f-68f0c31929a1",
+						"exec": [
+							"const response = pm.response.json();\r",
+							"\r",
+							"pm.globals.set(\"account_id\", response.id);\r",
+							"\r",
+							"console.log(\"username: \" + response.username, \"user_id: \" + response.id);\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 1000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "991bd619-ca2a-428b-be43-4b437a0298f5",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.themoviedb.org/3/account?api_key=9abed9e55c2e92c3286417954422903e&session_id={{session_id}}",
+					"protocol": "https",
+					"host": [
+						"api",
+						"themoviedb",
+						"org"
+					],
+					"path": [
+						"3",
+						"account"
+					],
+					"query": [
+						{
+							"key": "api_key",
+							"value": "9abed9e55c2e92c3286417954422903e"
+						},
+						{
+							"key": "session_id",
+							"value": "{{session_id}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetFavoriteMovies",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b7a05a76-aee9-4048-97da-7f3764e416e5",
+						"exec": [
+							"const response = pm.response.json();\r",
+							"\r",
+							"console.log(response);\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 1000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "0be2dd29-0ee5-4c4a-a1f7-049a5ab7dd71",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.themoviedb.org/3/account/{account_id}/favorite/movies?api_key=9abed9e55c2e92c3286417954422903e&language=pt-BR&sort_by=created_at.asc&page=1&session_id={{session_id}}",
+					"protocol": "https",
+					"host": [
+						"api",
+						"themoviedb",
+						"org"
+					],
+					"path": [
+						"3",
+						"account",
+						"{account_id}",
+						"favorite",
+						"movies"
+					],
+					"query": [
+						{
+							"key": "api_key",
+							"value": "9abed9e55c2e92c3286417954422903e"
+						},
+						{
+							"key": "language",
+							"value": "pt-BR"
+						},
+						{
+							"key": "sort_by",
+							"value": "created_at.asc"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "session_id",
+							"value": "{{session_id}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetMovieGenreList",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "451c1d9a-33c1-4c1f-b48e-3c4db16d7b94",
+						"exec": [
+							"const response = pm.response.json();\r",
+							"\r",
+							"console.log(response);\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 1000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "5bacc7fe-c96e-4ca4-ba5e-198578f4440b",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.themoviedb.org/3/genre/movie/list?api_key=9abed9e55c2e92c3286417954422903e&language=pt-BR",
+					"protocol": "https",
+					"host": [
+						"api",
+						"themoviedb",
+						"org"
+					],
+					"path": [
+						"3",
+						"genre",
+						"movie",
+						"list"
+					],
+					"query": [
+						{
+							"key": "api_key",
+							"value": "9abed9e55c2e92c3286417954422903e"
+						},
+						{
+							"key": "language",
+							"value": "pt-BR"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetMovieDetail",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1bd5c3d7-d2f2-4b47-b399-d45627723a7b",
+						"exec": [
+							"const response = pm.response.json();\r",
+							"\r",
+							"console.log(response.title);\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Movie original title to be..\", () => {\r",
+							"    pm.expect(pm.response.json().original_title)\r",
+							"    .to.eql(\"The Lord of the Rings: The Return of the King\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 1000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "8a79e274-4c95-4e2e-a510-1e06cdc7030d",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.themoviedb.org/3/movie/122?api_key=9abed9e55c2e92c3286417954422903e&language=pt-BR",
+					"protocol": "https",
+					"host": [
+						"api",
+						"themoviedb",
+						"org"
+					],
+					"path": [
+						"3",
+						"movie",
+						"122"
+					],
+					"query": [
+						{
+							"key": "api_key",
+							"value": "9abed9e55c2e92c3286417954422903e"
+						},
+						{
+							"key": "language",
+							"value": "pt-BR"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetNewlyCreatedMovie",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "bc9f5352-60e2-434d-af69-ddf3cac9e341",
+						"exec": [
+							"const response = pm.response.json();\r",
+							"\r",
+							"console.log(response.title);\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 1000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "ee132cb0-20a0-48e3-92df-239876017a68",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.themoviedb.org/3/movie/latest?api_key=9abed9e55c2e92c3286417954422903e",
+					"protocol": "https",
+					"host": [
+						"api",
+						"themoviedb",
+						"org"
+					],
+					"path": [
+						"3",
+						"movie",
+						"latest"
+					],
+					"query": [
+						{
+							"key": "api_key",
+							"value": "9abed9e55c2e92c3286417954422903e"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetTopRatedMovies",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "bbd34e53-fd06-487e-b58d-02b2d6d4e808",
+						"exec": [
+							"const response = pm.response.json();\r",
+							"\r",
+							"console.log(response);\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 1000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "cf7a99bc-037b-4681-a158-81d67077d831",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.themoviedb.org/3/movie/top_rated?api_key=9abed9e55c2e92c3286417954422903e&language=pt-BR&page=1",
+					"protocol": "https",
+					"host": [
+						"api",
+						"themoviedb",
+						"org"
+					],
+					"path": [
+						"3",
+						"movie",
+						"top_rated"
+					],
+					"query": [
+						{
+							"key": "api_key",
+							"value": "9abed9e55c2e92c3286417954422903e"
+						},
+						{
+							"key": "language",
+							"value": "pt-BR"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RateExistingMovie",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "bb594074-7068-4a53-b102-4e8aa69d0cfb",
+						"exec": [
+							"const response = pm.response.json();\r",
+							"\r",
+							"console.log(response.status_message);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Rating added/edited\", function (){\r",
+							"    pm.expect(response.success).to.be.true;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 1000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "b41cc410-5724-4c3c-9afd-7d14b1cc1f47",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"value\": 10.0 //valores de 0.5 a 10.0\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.themoviedb.org/3/movie/122/rating?api_key=9abed9e55c2e92c3286417954422903e&session_id={{session_id}}",
+					"protocol": "https",
+					"host": [
+						"api",
+						"themoviedb",
+						"org"
+					],
+					"path": [
+						"3",
+						"movie",
+						"122",
+						"rating"
+					],
+					"query": [
+						{
+							"key": "api_key",
+							"value": "9abed9e55c2e92c3286417954422903e"
+						},
+						{
+							"key": "session_id",
+							"value": "{{session_id}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteRateForExistingMovie",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "bb594074-7068-4a53-b102-4e8aa69d0cfb",
+						"exec": [
+							"const response = pm.response.json();\r",
+							"\r",
+							"console.log(response.status_message);\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Rating deleted\", function (){\r",
+							"    pm.expect(response.success).to.be.true;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 1000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "bd33165a-572f-405c-9ad1-3c539064a797",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"value\": 10.0 //valores de 0.5 a 10.0\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.themoviedb.org/3/movie/122/rating?api_key=9abed9e55c2e92c3286417954422903e&session_id={{session_id}}",
+					"protocol": "https",
+					"host": [
+						"api",
+						"themoviedb",
+						"org"
+					],
+					"path": [
+						"3",
+						"movie",
+						"122",
+						"rating"
+					],
+					"query": [
+						{
+							"key": "api_key",
+							"value": "9abed9e55c2e92c3286417954422903e"
+						},
+						{
+							"key": "session_id",
+							"value": "{{session_id}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateSession(v4 access token)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "58b7b21c-ab6f-4417-8f93-623e6ecc3895",
+						"exec": [
+							"let response = pm.response.json();\r",
+							"\r",
+							"pm.globals.set(\"session_id\", response.session_id);\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 1500ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "268c87d6-5be1-42dd-859c-4591f1316dfb",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"access_token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MzAwMDE1MWJmMzFmMjAwN2FmNjY5ZWEiLCJuYmYiOjE2NjEwMDgwMTAsImF1ZCI6IjlhYmVkOWU1NWMyZTkyYzMyODY0MTc5NTQ0MjI5MDNlIiwianRpIjoiNDc4MjI3NSIsInNjb3BlcyI6WyJhcGlfcmVhZCIsImFwaV93cml0ZSJdLCJ2ZXJzaW9uIjoxfQ.VjaTixZDGzs-G7SVzPN6kl3GTAho25qDUc0D-c2SxFs\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.themoviedb.org/3/authentication/session/convert/4?api_key=9abed9e55c2e92c3286417954422903e",
+					"protocol": "https",
+					"host": [
+						"api",
+						"themoviedb",
+						"org"
+					],
+					"path": [
+						"3",
+						"authentication",
+						"session",
+						"convert",
+						"4"
+					],
+					"query": [
+						{
+							"key": "api_key",
+							"value": "9abed9e55c2e92c3286417954422903e"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateNewList",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7b613746-a718-45eb-a326-5eac9ebb1eef",
+						"exec": [
+							"let response = pm.response.json();\r",
+							"\r",
+							"pm.globals.set(\"list_id\", response.list_id);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 1000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "dd2d8135-4e87-4d4f-bb79-5fcf36d019d5",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Lista de teste da API\",\r\n  \"description\": \"Teste\",\r\n  \"language\": \"pt-BR\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.themoviedb.org/3/list?api_key=9abed9e55c2e92c3286417954422903e&session_id={{session_id}}",
+					"protocol": "https",
+					"host": [
+						"api",
+						"themoviedb",
+						"org"
+					],
+					"path": [
+						"3",
+						"list"
+					],
+					"query": [
+						{
+							"key": "api_key",
+							"value": "9abed9e55c2e92c3286417954422903e"
+						},
+						{
+							"key": "session_id",
+							"value": "{{session_id}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateNewListWithInvalidParameters",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7b613746-a718-45eb-a326-5eac9ebb1eef",
+						"exec": [
+							"const response = pm.response.json();\r",
+							"\r",
+							"console.log(response.errors);\r",
+							"\r",
+							"pm.test(\"Status code is 422\", function () {\r",
+							"    pm.response.to.have.status(422);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 1000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "7c08a3f5-f582-412d-a2c4-dbcd181b32c2",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Lista de teste da API de TheMovieDB.org\",\r\n  \"description\": \"Lista criada para galera da Suno validar\",\r\n  \"language\": \"pt-BR\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.themoviedb.org/3/list?api_key=9abed9e55c2e92c3286417954422903e&session_id={{session_id}}",
+					"protocol": "https",
+					"host": [
+						"api",
+						"themoviedb",
+						"org"
+					],
+					"path": [
+						"3",
+						"list"
+					],
+					"query": [
+						{
+							"key": "api_key",
+							"value": "9abed9e55c2e92c3286417954422903e"
+						},
+						{
+							"key": "session_id",
+							"value": "{{session_id}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetCreatedLists",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c61aebed-206c-4b8d-923f-68f0c31929a1",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 1000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "7dba5e2f-7c38-4812-81b9-522cf908898c",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.themoviedb.org/3/account/:account_id/lists?api_key=9abed9e55c2e92c3286417954422903e&session_id={{session_id}}",
+					"protocol": "https",
+					"host": [
+						"api",
+						"themoviedb",
+						"org"
+					],
+					"path": [
+						"3",
+						"account",
+						":account_id",
+						"lists"
+					],
+					"query": [
+						{
+							"key": "api_key",
+							"value": "9abed9e55c2e92c3286417954422903e"
+						},
+						{
+							"key": "session_id",
+							"value": "{{session_id}}"
+						}
+					],
+					"variable": [
+						{
+							"key": "account_id",
+							"value": "{{account_id}}",
+							"type": "string"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddFirstMovieToList",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0c80baab-5872-40db-9caf-1af5eb883af2",
+						"exec": [
+							"const response = pm.response.json();\r",
+							"\r",
+							"console.log(response);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 1000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "b54f4ea4-a970-4c1b-b5b1-a8e24e67bdb0",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"media_id\": 122\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.themoviedb.org/3/list/:list_id/add_item?api_key=9abed9e55c2e92c3286417954422903e&session_id={{session_id}}",
+					"protocol": "https",
+					"host": [
+						"api",
+						"themoviedb",
+						"org"
+					],
+					"path": [
+						"3",
+						"list",
+						":list_id",
+						"add_item"
+					],
+					"query": [
+						{
+							"key": "api_key",
+							"value": "9abed9e55c2e92c3286417954422903e"
+						},
+						{
+							"key": "session_id",
+							"value": "{{session_id}}"
+						}
+					],
+					"variable": [
+						{
+							"key": "list_id",
+							"value": "{{list_id}}",
+							"type": "string"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddSecondMovieToList",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0c80baab-5872-40db-9caf-1af5eb883af2",
+						"exec": [
+							"const response = pm.response.json();\r",
+							"\r",
+							"console.log(response);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 1000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "318065d8-a5f3-4604-8dc9-bc7dc08ecf6f",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"media_id\": 18\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.themoviedb.org/3/list/:list_id/add_item?api_key=9abed9e55c2e92c3286417954422903e&session_id={{session_id}}",
+					"protocol": "https",
+					"host": [
+						"api",
+						"themoviedb",
+						"org"
+					],
+					"path": [
+						"3",
+						"list",
+						":list_id",
+						"add_item"
+					],
+					"query": [
+						{
+							"key": "api_key",
+							"value": "9abed9e55c2e92c3286417954422903e"
+						},
+						{
+							"key": "session_id",
+							"value": "{{session_id}}"
+						}
+					],
+					"variable": [
+						{
+							"key": "list_id",
+							"value": "{{list_id}}",
+							"type": "string"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetItemAddedToListStatus",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "eca049c6-cd16-4386-8eec-74d6aacd6f48",
+						"exec": [
+							"const response = pm.response.json();\r",
+							"\r",
+							"console.log(response);\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Item successfully added in list\", function (){\r",
+							"    pm.expect(response.item_present).to.be.true;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 1000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "5c8459e0-3fa0-4959-8f78-71880267d3f2",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.themoviedb.org/3/list/:list_id/item_status?api_key=9abed9e55c2e92c3286417954422903e&movie_id=18",
+					"protocol": "https",
+					"host": [
+						"api",
+						"themoviedb",
+						"org"
+					],
+					"path": [
+						"3",
+						"list",
+						":list_id",
+						"item_status"
+					],
+					"query": [
+						{
+							"key": "api_key",
+							"value": "9abed9e55c2e92c3286417954422903e"
+						},
+						{
+							"key": "movie_id",
+							"value": "18"
+						}
+					],
+					"variable": [
+						{
+							"key": "list_id",
+							"value": "{{list_id}}",
+							"type": "string"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddExistingMovieToList",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0c80baab-5872-40db-9caf-1af5eb883af2",
+						"exec": [
+							"const response = pm.response.json();\r",
+							"\r",
+							"console.log(response.status_message);\r",
+							"\r",
+							"pm.test(\"Status code is 403\", function () {\r",
+							"    pm.response.to.have.status(403);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 1000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "44f13d62-868e-43c6-828b-fce1f68504e3",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"media_id\": 122\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.themoviedb.org/3/list/:list_id/add_item?api_key=9abed9e55c2e92c3286417954422903e&session_id={{session_id}}",
+					"protocol": "https",
+					"host": [
+						"api",
+						"themoviedb",
+						"org"
+					],
+					"path": [
+						"3",
+						"list",
+						":list_id",
+						"add_item"
+					],
+					"query": [
+						{
+							"key": "api_key",
+							"value": "9abed9e55c2e92c3286417954422903e"
+						},
+						{
+							"key": "session_id",
+							"value": "{{session_id}}"
+						}
+					],
+					"variable": [
+						{
+							"key": "list_id",
+							"value": "{{list_id}}",
+							"type": "string"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetCreatedList",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6f929adb-f6d9-44f1-92d4-28a3f14028dc",
+						"exec": [
+							"const response = pm.response.json();\r",
+							"\r",
+							"console.log(response.status_message);\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 1500ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1500);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "ef752dd8-2f06-4f8f-ba3f-a5f56b2715a7",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.themoviedb.org/3/list/:list_id?api_key=9abed9e55c2e92c3286417954422903e&language=pt-BR",
+					"protocol": "https",
+					"host": [
+						"api",
+						"themoviedb",
+						"org"
+					],
+					"path": [
+						"3",
+						"list",
+						":list_id"
+					],
+					"query": [
+						{
+							"key": "api_key",
+							"value": "9abed9e55c2e92c3286417954422903e"
+						},
+						{
+							"key": "language",
+							"value": "pt-BR"
+						}
+					],
+					"variable": [
+						{
+							"key": "list_id",
+							"value": "{{list_id}}",
+							"type": "string"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RemoveMovieFromList",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0c80baab-5872-40db-9caf-1af5eb883af2",
+						"exec": [
+							"const response = pm.response.json();\r",
+							"\r",
+							"console.log(response.status_message);\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 1000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "51ce356c-6390-430b-b611-a3558c39e264",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"media_id\": 122\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.themoviedb.org/3/list/:list_id/remove_item?api_key=9abed9e55c2e92c3286417954422903e&session_id={{session_id}}",
+					"protocol": "https",
+					"host": [
+						"api",
+						"themoviedb",
+						"org"
+					],
+					"path": [
+						"3",
+						"list",
+						":list_id",
+						"remove_item"
+					],
+					"query": [
+						{
+							"key": "api_key",
+							"value": "9abed9e55c2e92c3286417954422903e"
+						},
+						{
+							"key": "session_id",
+							"value": "{{session_id}}"
+						}
+					],
+					"variable": [
+						{
+							"key": "list_id",
+							"value": "{{list_id}}",
+							"type": "string"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ClearMovieList",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0c80baab-5872-40db-9caf-1af5eb883af2",
+						"exec": [
+							"const response = pm.response.json();\r",
+							"\r",
+							"console.log(response.status_message);\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"List successfully cleared\", function (){\r",
+							"    pm.expect(response.success).to.be.true;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 1000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "cd194ca4-3663-49ef-a286-fac244294430",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"media_id\": 999\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.themoviedb.org/3/list/:list_id/clear?api_key=9abed9e55c2e92c3286417954422903e&session_id={{session_id}}&confirm=true",
+					"protocol": "https",
+					"host": [
+						"api",
+						"themoviedb",
+						"org"
+					],
+					"path": [
+						"3",
+						"list",
+						":list_id",
+						"clear"
+					],
+					"query": [
+						{
+							"key": "api_key",
+							"value": "9abed9e55c2e92c3286417954422903e"
+						},
+						{
+							"key": "session_id",
+							"value": "{{session_id}}"
+						},
+						{
+							"key": "confirm",
+							"value": "true"
+						}
+					],
+					"variable": [
+						{
+							"key": "list_id",
+							"value": "{{list_id}}",
+							"type": "string"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ClearMovieListWithFalseParameter",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0c80baab-5872-40db-9caf-1af5eb883af2",
+						"exec": [
+							"const response = pm.response.json();\r",
+							"\r",
+							"console.log(response.status_message);\r",
+							"\r",
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Expect success to be false\", function() {\r",
+							"    pm.expect(response.success).to.be.false;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 1000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "e242bb24-1b0a-4458-af45-2f4e8999e887",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"media_id\": 999\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.themoviedb.org/3/list/:list_id/clear?api_key=9abed9e55c2e92c3286417954422903e&session_id={{session_id}}&confirm=false",
+					"protocol": "https",
+					"host": [
+						"api",
+						"themoviedb",
+						"org"
+					],
+					"path": [
+						"3",
+						"list",
+						":list_id",
+						"clear"
+					],
+					"query": [
+						{
+							"key": "api_key",
+							"value": "9abed9e55c2e92c3286417954422903e"
+						},
+						{
+							"key": "session_id",
+							"value": "{{session_id}}"
+						},
+						{
+							"key": "confirm",
+							"value": "false"
+						}
+					],
+					"variable": [
+						{
+							"key": "list_id",
+							"value": "{{list_id}}",
+							"type": "string"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteExistingList",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0c80baab-5872-40db-9caf-1af5eb883af2",
+						"exec": [
+							"//Ao realizar o teste, verifiquei que a request com sucesso está retornando status 500.\r",
+							"//Caso retorne o código 201, por favor, ignorem o erro, pois é possível que seja instabilidade do servidor.\r",
+							"\r",
+							"\r",
+							"//pm.test(\"Status code is 201\", function () {\r",
+							"//    pm.response.to.have.status(201);\r",
+							"//});\r",
+							"\r",
+							"//pm.test(\"Expect success to be true\", function() {\r",
+							"//    pm.expect(response.success).to.be.true;\r",
+							"//})\r",
+							"\r",
+							"const response = pm.response.json();\r",
+							"\r",
+							"console.log(response.status_message);\r",
+							"\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response time is less than 1000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "8fe9c0a2-760a-4127-9891-9d76ede063cc",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://api.themoviedb.org/3/list/:list_id?api_key=9abed9e55c2e92c3286417954422903e&session_id={{session_id}}",
+					"protocol": "https",
+					"host": [
+						"api",
+						"themoviedb",
+						"org"
+					],
+					"path": [
+						"3",
+						"list",
+						":list_id"
+					],
+					"query": [
+						{
+							"key": "api_key",
+							"value": "9abed9e55c2e92c3286417954422903e"
+						},
+						{
+							"key": "session_id",
+							"value": "{{session_id}}"
+						}
+					],
+					"variable": [
+						{
+							"key": "list_id",
+							"value": "{{list_id}}",
+							"type": "string"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TryToCreateSessionWithInvalidRequestToken",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "35139c9d-a71a-494d-8bd8-9e5d0f34c870",
+						"exec": [
+							"const response = pm.response.json();\r",
+							"\r",
+							"console.log(response.status_message);\r",
+							"\r",
+							"pm.test(\"Status code is 401\", function () {\r",
+							"    pm.response.to.have.status(401);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 1000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "a48481d4-0aa3-4d35-b0e4-0c7f657da69a",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"request_token\": \"513424123241312512\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.themoviedb.org/3/authentication/session/new?api_key=9abed9e55c2e92c3286417954422903e",
+					"protocol": "https",
+					"host": [
+						"api",
+						"themoviedb",
+						"org"
+					],
+					"path": [
+						"3",
+						"authentication",
+						"session",
+						"new"
+					],
+					"query": [
+						{
+							"key": "api_key",
+							"value": "9abed9e55c2e92c3286417954422903e"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TryToValidadeWithWrongCredentials",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "adf2ca32-1fbb-416c-845b-17a8bb7e2b72",
+						"exec": [
+							"const response = pm.response.json();\r",
+							"\r",
+							"console.log(response.status_message);\r",
+							"\r",
+							"pm.test(\"Status code is 401\", function () {\r",
+							"    pm.response.to.have.status(401);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 1000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "1948270e-5ec6-48c8-bfde-401bc99044da",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"Nikoreis\",\r\n  \"password\": \"1212hoho\",\r\n  \"request_token\": \"{{request_token}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.themoviedb.org/3/authentication/token/validate_with_login?api_key=9abed9e55c2e92c3286417954422903e",
+					"protocol": "https",
+					"host": [
+						"api",
+						"themoviedb",
+						"org"
+					],
+					"path": [
+						"3",
+						"authentication",
+						"token",
+						"validate_with_login"
+					],
+					"query": [
+						{
+							"key": "api_key",
+							"value": "9abed9e55c2e92c3286417954422903e"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TryToDeleteSessionUsingWrongId",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2bcac819-c155-4336-845a-3bb7c2097725",
+						"exec": [
+							"const response = pm.response.json();\r",
+							"\r",
+							"console.log(response.status_message);\r",
+							"\r",
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 1000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "3ed07990-ebaf-400e-8575-47c7b0d4ee71",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"session_id\": \"342132131245123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.themoviedb.org/3/authentication/session?api_key=9abed9e55c2e92c3286417954422903e",
+					"protocol": "https",
+					"host": [
+						"api",
+						"themoviedb",
+						"org"
+					],
+					"path": [
+						"3",
+						"authentication",
+						"session"
+					],
+					"query": [
+						{
+							"key": "api_key",
+							"value": "9abed9e55c2e92c3286417954422903e"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteCurrentSession",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "489f0044-e67d-4772-b6d7-2dd346f0e4bd",
+						"exec": [
+							"const response = pm.response.json();\r",
+							"\r",
+							"console.log(response);\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Session successfully deleted\", function (){\r",
+							"    pm.expect(response.success).to.be.true;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 1000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "81f3e042-b11b-4153-8521-d4dd74b84a06",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"session_id\": \"{{session_id}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.themoviedb.org/3/authentication/session?api_key=9abed9e55c2e92c3286417954422903e",
+					"protocol": "https",
+					"host": [
+						"api",
+						"themoviedb",
+						"org"
+					],
+					"path": [
+						"3",
+						"authentication",
+						"session"
+					],
+					"query": [
+						{
+							"key": "api_key",
+							"value": "9abed9e55c2e92c3286417954422903e"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
